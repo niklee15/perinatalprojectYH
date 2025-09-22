@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding perinatal inpatient pathways across Yorkshire & Humber</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .org-logo {
+            text-align: center;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .org-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .org-logo-line1 {
+            color: #27AE60;
+        }
+
+        .org-logo-line2 {
+            color: #E67E22;
+        }
+
+        main {
+            margin-top: 20px;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .content-section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .content-section h2 {
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #2980b9, #3498db);
+            border-radius: 2px;
+        }
+
+        .content-section h3 {
+            color: #4a5568;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #2980b9;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #2980b9, #3498db);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #2980b9;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #2980b9;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="org-logo">
+        <div class="org-logo-text">
+            <div class="org-logo-line1">Yorkshire and Humber</div>
+            <div class="org-logo-line2">Perinatal Mental Health Provider Collaborative</div>
+        </div>
+    </div>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Understanding perinatal inpatient pathways across Yorkshire & Humber</h1>
+                <p>Exploring how commissioned inpatient mental health services meet the needs of women in the perinatal period — access to MBUs and the realities of care on acute and PICU wards. Live updates, resources, and findings for partners and stakeholders.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="overview" class="content-section">
+                <h2>Project Overview</h2>
+                <p>This project explores how commissioned inpatient mental health services meet the needs of women in the perinatal period. It focuses on understanding access to Mother and Baby Units (MBUs) and the realities of care on acute and psychiatric intensive care (PICU) wards.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <h3>Background & Rationale</h3>
+                        <p>Across Yorkshire and Humber, women in the perinatal period may be admitted to local MBUs, out-of-area MBUs, or non-MBU wards. The system currently lacks a clear, evidence-based understanding of how pathways operate for women not admitted to MBUs.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Quality Oversight</h3>
+                        <p>Through in-depth case manager reviews, clinical record analysis, and stakeholder engagement, we monitor quality and map referral routes, decision points, and care pathways.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="content-section">
+                <h2>About the Project</h2>
+                <p>This six-week scoping project explores how inpatient mental health care is accessed and experienced by women in the perinatal period admitted to non-MBU wards in Leeds.</p>
+                
+                <h3>Key Aims & Objectives</h3>
+                <ul>
+                    <li>Understand referral pathways, including MBU vs non-MBU bed use</li>
+                    <li>Build insight into decisions around admissions, care planning, and delivery</li>
+                    <li>Explore how step downs from non-MBU to MBU wards happen in practice</li>
+                    <li>Support sustainable commissioning and improve access to MBUs</li>
+                </ul>
+
+                <h3>Core Principles</h3>
+                <ul>
+                    <li>Trauma-informed, collaborative, appreciative enquiry</li>
+                    <li>Focus on women's, babies', and families' experiences</li>
+                    <li>Co-production with service users and staff</li>
+                </ul>
+            </section>
+
+            <section id="timeline" class="content-section">
+                <h2>Project Timeline</h2>
+                <p style="margin-bottom: 2rem; font-style: italic; color: #666;">Project commences 29th September 2025</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Week 1-2: Stakeholder Engagement</h3>
+                        <p>Engagement with ward staff, liaison teams, and care coordinators</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Week 2-4: Case Studies</h3>
+                        <p>Case studies of nine women referred to MBU but admitted to acute/PICU wards in 2023-24</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Week 3-5: Clinical Review</h3>
+                        <p>Clinical record review to provide contextual insights</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Week 4-6: Analysis</h3>
+                        <p>Thematic analysis of staff and women's feedback</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Week 6: Synthesis</h3>
+                        <p>Synthesis and recommendations; report shared with PC and Assurance Board</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="engagement" class="content-section">
+                <h2>Stakeholder Engagement</h2>
+                <h3>Who's Involved</h3>
+                <ul>
+                    <li>LYPFT acute and PICU wards</li>
+                    <li>Community perinatal mental health team, liaison services</li>
+                    <li>Care coordinators, peer support workers</li>
+                    <li>Commissioning Hub, ICBs, RMS</li>
+                </ul>
+
+                <h3>Patient & Family Voice</h3>
+                <p>We involve women, babies, and families through case studies using an appreciative enquiry approach. Women are invited to share their experiences in a constructive, respectful way, supported by care coordinators or peer support workers.</p>
+
+                <h3>Key Research Questions</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h4>Pathway Structure</h4>
+                        <p>How is the inpatient pathway for perinatal women structured and delivered in West Yorkshire?</p>
+                    </div>
+                    <div class="card">
+                        <h4>Experience Assessment</h4>
+                        <p>What are the experiences of women and clinicians when accessing and delivering care?</p>
+                    </div>
+                    <div class="card">
+                        <h4>Complex Needs</h4>
+                        <p>How are the needs of women with complex/high-risk presentations met when not admitted to MBUs?</p>
+                    </div>
+                    <div class="card">
+                        <h4>Step Down Process</h4>
+                        <p>How are step downs to MBUs considered and managed?</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="content-section">
+                <div class="contact-info">
+                    <h3>Project Leads</h3>
+                    <p><strong>Nik Lee</strong><br>
+                    <a href="mailto:nicholas.lee3@nhs.net">nicholas.lee3@nhs.net</a></p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Joseph Sykes</strong><br>
+                    <a href="mailto:j.sykes1@nhs.net">j.sykes1@nhs.net</a></p>
+                    
+                    <p style="margin-top: 1.5rem; opacity: 0.9;">Please contact us if you would like to be involved in the project or have any further questions.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
